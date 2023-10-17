@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCounter } from './store/selectors';
 import { Observable } from 'rxjs';
 import { CounterActions } from './store/actions';
+import { counterFeature } from './store/reducers';
 
 @Component({
   selector: 'app-two',
@@ -12,7 +12,7 @@ import { CounterActions } from './store/actions';
 export class TwoComponent {
   count$: Observable<number>;
   constructor(private readonly store: Store) {
-    this.count$ = store.select(selectCounter);
+    this.count$ = store.select(counterFeature.selectCounter);
   }
   onIncr() {
     this.store.dispatch(CounterActions.increment());
@@ -22,5 +22,8 @@ export class TwoComponent {
   }
   onReset() {
     this.store.dispatch(CounterActions.reset());
+  }
+  onYolo() {
+    this.store.select(counterFeature.selectCounter).subscribe(console.log);
   }
 }
