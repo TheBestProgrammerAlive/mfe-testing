@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CounterActions } from './store/actions';
 import { counterFeature } from './store/reducers';
-
 @Component({
   selector: 'app-two',
   templateUrl: './two.component.html',

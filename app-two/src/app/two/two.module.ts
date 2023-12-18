@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { TwoComponent } from './two.component';
 import { TwoRoutingModule } from './two-routing.module';
 import { StoreModule } from '@ngrx/store';
-import {counterFeature, counterReducer} from './store/reducers';
+import { counterFeature, counterReducer } from './store/reducers';
 
 @NgModule({
   declarations: [TwoComponent],
   imports: [
     CommonModule,
     TwoRoutingModule,
+    StoreModule.forRoot({}),
     StoreModule.forFeature(counterFeature),
   ],
   exports: [TwoComponent],

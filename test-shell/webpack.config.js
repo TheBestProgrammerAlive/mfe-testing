@@ -1,4 +1,4 @@
-const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
+const { shareAll, share, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
 
 module.exports = withModuleFederationPlugin({
 
@@ -10,8 +10,27 @@ module.exports = withModuleFederationPlugin({
     "three": "http://localhost:4203/remoteEntry.js",
   },
 
-  shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
-  },
-
+  // not shared libraries are included in mfe modules, so size getting really big
+  shared: share({
+    "@angular/core": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    },
+    "@angular/common": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    },
+    "@angular/common/http": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    },
+    "@angular/router": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    }
+  })
 });

@@ -2,10 +2,10 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 
 module.exports = withModuleFederationPlugin({
 
-  name: 'test-app-three',
+  name: 'app-three',
 
   exposes: {
-    './three': './src/app/three/three.module.ts',
+    './Three': './src/app/three/three.module.ts',
   },
 
   shared: {

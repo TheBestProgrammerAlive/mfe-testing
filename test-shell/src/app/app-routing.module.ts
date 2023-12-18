@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('two/Two').then(m => m.TwoModule)
   },
   {
+    path: "three",
+    loadChildren: () => import('three/Three').then(m => m.ThreeModule)
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
